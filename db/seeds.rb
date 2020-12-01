@@ -10,3 +10,9 @@ puts '=== User ==='
 user = User.new(name: 'kurotaku', email: 'test@test.com', password: 'password')
 user.skip_confirmation!
 user.save!
+
+
+puts '=== Post ==='
+user.posts.create(content: 'テスト投稿')
+user.posts.create(content: 'テスト投稿2')
+user.posts.create(content: 'テスト投稿3')
