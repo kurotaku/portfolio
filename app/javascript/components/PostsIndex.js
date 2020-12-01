@@ -70,6 +70,7 @@ class PostsIndex extends React.Component {
         content: this.state.form.content
       }
     })
+    
     fetch('/api/v1/posts', {
       method: 'POST',
       headers: {
