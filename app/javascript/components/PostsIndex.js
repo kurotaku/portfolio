@@ -107,12 +107,12 @@ class PostsIndex extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <ul>
+        <ul className="post-list">
           {this.state.posts.map( post => {
             return(
-              <li>
+              <li className="poat-list-item">
                 {post.content}
-                <button onClick={() => this.handleDelete(post.id)}>削除</button>
+                <button className="ml-auto border-btn text-danger" onClick={() => this.handleDelete(post.id)}>削除</button>
               </li>
             );
           })}
