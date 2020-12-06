@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'annotate'
 
+gem 'ulid', require: false
+
 # for front end
 gem 'kaminari'
 gem 'react-rails'
