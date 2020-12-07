@@ -27,6 +27,12 @@
   margin-right: auto !important;
 }
 
+ul, ol{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 button{
   background-color: transparent;
   border: none;
@@ -34,6 +40,10 @@ button{
   outline: none;
   padding: 0;
   appearance: none;
+}
+
+table{
+  border-collapse: collapse;
 }
 
 /*--------------------------------------------------------------
@@ -81,7 +91,12 @@ html{
 /*--------------------------------------------------------------
 ####### Common #######
 --------------------------------------------------------------*/
-
+.w-100{
+  width: 100% !important;
+}
+.text-right{
+  text-align: right;
+}
 /*--------------------------------------------------------------
 ####### Display #######
 --------------------------------------------------------------*/
@@ -113,6 +128,34 @@ $danger: #f67997;
 =============================== */
 body{
   background-color: #fafbfd;
+}
+
+.main-wrap{
+  display: flex;
+}
+
+/*=============================
+    Main Menu
+=============================== */
+.main-nav{
+  width: 270px;
+  flex: 0 0 auto;
+  background-color: $white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+  height: 100vh;
+  padding: 24px;
+  .logo{
+    color: $primary-color;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+}
+
+.main-contents{
+  width: 100%;
   padding: 40px;
 }
 
@@ -129,14 +172,14 @@ body{
 
 /* list */
 .poat-list-item{
+  display: flex;
+  align-items: center;
   background-color: $white;
   border-radius: 4px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .1);
-  padding: 16px;
   margin-bottom: 12px;
   font-size: 1.2rem;
   color: $text-01;
-  display: flex;
-  align-items: center;
+  padding: 16px;
 }
 

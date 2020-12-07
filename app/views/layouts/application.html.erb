@@ -10,6 +10,11 @@
   </head>
 
   <body class="body">
-    <%= yield %>
+    <div class="main-wrap">
+      <%= render 'layouts/main_menu' %>
+      <div class="main-contents">
+        <%= yield %>
+      </div><!-- .main-contents -->
+    </div><!-- .main-wrap -->
   </body>
 </html>
