@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+  <div class="error-message mb-5">
+    <span class="icon-Error mr-3"></span>
+    <ul class="error-message-list">
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

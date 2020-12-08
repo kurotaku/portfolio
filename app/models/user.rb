@@ -4,5 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  include Uniqueable
+
+  mount_uploader :image, ImageUploader
+
   has_many :posts
+
+  def full_name
+    last_name.to_s + ' ' + first_name.to_s
+  end
 end

@@ -7,10 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts '=== User ==='
-user = User.new(name: 'kurotaku', email: 'test@test.com', password: 'password')
+user = User.new(name: 'kurotaku', email: 'test@test.com', password: 'password', first_name: '太郎', last_name: '山田')
 user.skip_confirmation!
 user.save!
-
 
 puts '=== Post ==='
 user.posts.create(content: 'テスト投稿')
