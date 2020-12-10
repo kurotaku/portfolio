@@ -20,7 +20,17 @@ WORKDIR /app
 
 ADD Gemfile* /app/
 
-RUN bundle install -j4 --retry 3
+# bundle install
+ENV BUNDLE_PATH=/bundle \
+    BUNDLE_BIN=/bundle/bin \
+    GEM_HOME=/bundle
+
+ENV PATH="${BUNDLE_BIN}:${PATH}"
+
+RUN gem install bundler
+RUN bundle config --global build.nokogiri --use-system-libraries
+RUN bundle config --global jobs 4
+RUN bundle install
 
 ADD . /app
 
