@@ -1,9 +1,7 @@
 <% flash.each do |message_type, message| %>
-  <% if message != nil %>
-    <div class="notification">
-      <div class="notification-inner">
-          <div class="alert <%= message_type %>"><%= simple_format message %></div>
-      </div>
+  <% if message.present? %>
+    <div class="flash-message">
+      <div class="alert <%= message_type %>"><%= simple_format message %></div>
     </div>
   <% end %>
 <% end %>
