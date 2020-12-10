@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'annotate'
 
 gem 'ulid', require: false
+gem 'sysrandom'
 
 # for front end
 gem 'kaminari'
