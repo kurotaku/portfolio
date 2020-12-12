@@ -28,8 +28,6 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'annotate'
-
 gem 'ulid', require: false
 gem 'sysrandom'
 
@@ -49,7 +47,15 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'carrierwave-base64'
 gem 'fog-aws'
 
+gem 'annotate'
+gem 'chart-js-rails'
 gem 'dotenv-rails'
+# gem 'enumerize'
+gem 'kaminari'
+gem 'paranoia'
+gem 'sidekiq'
+# gem 'wicked_pdf'
+# gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
