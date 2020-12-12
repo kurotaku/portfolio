@@ -50,7 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.aws[:DATABASE_NAME] %>
-  username: <%= Rails.application.credentials.aws[:DATABASE_USERNAME] %>
-  password: <%= Rails.application.credentials.aws[:DATABASE_PASSWORD] %>
-  host: <%= Rails.application.credentials.aws[:DATABASE_HOST] %>
+  database: <%= Rails.application.credentials.prd[:DATABASE_NAME] %>
+  username: <%= Rails.application.credentials.prd[:DATABASE_USERNAME] %>
+  password: <%= Rails.application.credentials.prd[:DATABASE_PASSWORD] %>
+  host: <%= Rails.application.credentials.prd[:DATABASE_HOST] %>
