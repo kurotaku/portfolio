@@ -47,6 +47,7 @@ gem 'carrierwave-base64'
 gem 'fog-aws'
 
 gem 'annotate'
+gem 'aws-sdk-rails'
 gem 'chart-js-rails'
 gem 'dotenv-rails'
 # gem 'enumerize'
