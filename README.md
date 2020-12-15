@@ -22,3 +22,8 @@ ps aux | grep puma
 ```
 kill -9 プロセスID
 ```
+### DBリセット
+
+```
+RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:migrate:reset
+```
