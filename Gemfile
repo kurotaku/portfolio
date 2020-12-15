@@ -28,11 +28,10 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'ulid', require: false
 gem 'sysrandom'
+gem 'ulid', require: false
 
 # for front end
-gem 'kaminari'
 gem 'react-rails'
 # gem 'mini_racer'
 gem 'rails-i18n'
