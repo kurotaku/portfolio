@@ -4,6 +4,7 @@ class PostsIndex extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      current_user: [],
       posts: [],
       form: {
         content: ''
@@ -29,6 +30,16 @@ class PostsIndex extends React.Component {
 
   componentDidMount(){
     this.getIndex();
+    this.getCurrentUser();
+  }
+
+  getCurrentUser(){
+    fetch('/api/v1/current_user.json')
+    .then(response => {return response.json()} )
+    .then(data => {this.setState({ current_user: data })} )
+    .catch(error => {
+      console.log('GET CURRENTUSER ERROR:', error);
+    });
   }
 
   getIndex(){
@@ -168,7 +179,7 @@ class PostsIndex extends React.Component {
             if( this.state.editForm.uuid != post.uuid ){
               return(
                 <li key={post.uuid} className="poat-list-item">
-                  {post.content}
+                  <a href="">@{this.state.current_user.name}</a>{post.content}
                   <button className="ml-auto border-btn text-danger" onClick={() => this.handleEdit(post)}>編集</button>
                   <button className="border-btn text-danger" onClick={() => this.handleDelete(post.uuid)}>削除</button>
                 </li>

@@ -6,6 +6,14 @@ https://rails-app.com/
 
 ## 構成
 
+## 開発用コマンド
+
+### webpack起動
+
+```
+docker-compose exec app bin/webpack-dev-server
+```
+
 ## デプロイ関係
 
 ### 本番起動
