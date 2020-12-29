@@ -7,6 +7,6 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = find_by(uuid: params[:uuid])
+    @user = User.find_by(uuid: params[:uuid])
   end
 end

@@ -177,9 +177,13 @@ class PostsIndex extends React.Component {
         <ul className="post-list">
           {this.state.posts.map( post => {
             if( this.state.editForm.uuid != post.uuid ){
+              var user_path = '/users/' + post.user.uuid
               return(
                 <li key={post.uuid} className="poat-list-item">
-                  <a href="">@{this.state.current_user.name}</a>{post.content}
+                  <div>
+                    <a href={user_path}>@{post.user.name}</a><br />
+                    {post.content}
+                  </div>
                   <button className="ml-auto border-btn text-danger" onClick={() => this.handleEdit(post)}>編集</button>
                   <button className="border-btn text-danger" onClick={() => this.handleDelete(post.uuid)}>削除</button>
                 </li>
