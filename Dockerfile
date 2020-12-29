@@ -30,7 +30,7 @@ ENV BUNDLE_PATH=/bundle \
 
 ENV PATH="${BUNDLE_BIN}:${PATH}"
 
-RUN gem install bundler
+RUN gem install bundler -v '2.2.1'
 RUN bundle config --global build.nokogiri --use-system-libraries
 RUN bundle config --global jobs 4
 RUN bundle install
