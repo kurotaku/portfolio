@@ -143,6 +143,7 @@ class PostsIndex extends React.Component {
         content: post.content
       }
     })
+    console.log(this.state.editForm.uuid);
   }
 
   handleUpate(post){
@@ -176,8 +177,8 @@ class PostsIndex extends React.Component {
       <React.Fragment>
         <ul className="post-list">
           {this.state.posts.map( post => {
-            if( this.state.editForm.uuid != post.uuid ){
-              var user_path = '/users/' + post.user.uuid
+            var user_path = '/users/' + post.user.uuid
+            if(this.state.current_user.uuid == post.user.uuid && this.state.editForm.uuid != post.uuid){
               return(
                 <li key={post.uuid} className="poat-list-item">
                   <div>
@@ -188,13 +189,23 @@ class PostsIndex extends React.Component {
                   <button className="border-btn text-danger" onClick={() => this.handleDelete(post.uuid)}>削除</button>
                 </li>
               );
-            }else{
+            }
+            else if(this.state.current_user.uuid == post.user.uuid && this.state.editForm.uuid == post.uuid){
               return(
                 <li key={post.uuid} className="poat-list-item">
                   <input type="text" value={this.state.editForm.content} onChange={ e => this.handleChangeEdit(post.uuid, e, 'content')} />
                   
                   <button className="ml-auto border-btn text-danger" onClick={() => this.handleUpate(post)}>更新</button>
                   <button className="border-btn text-danger" onClick={() => this.formReset()}>閉じる</button>
+                </li>
+              );
+            }else{
+              return(
+                <li key={post.uuid} className="poat-list-item">
+                  <div>
+                    <a href={user_path}>@{post.user.name}</a><br />
+                    {post.content}
+                  </div>
                 </li>
               );
             }  
