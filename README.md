@@ -38,3 +38,9 @@ kill -9 プロセスID
 ```
 RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:migrate:reset
 ```
+
+### プリコンパイル
+
+```
+rails assets:precompile RAILS_ENV=production
+```
