@@ -16,10 +16,16 @@ docker-compose exec app bin/webpack-dev-server
 
 ## デプロイ関係
 
-### 本番起動
+### DBリセット
 
 ```
-rails s -e production
+RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:migrate:reset
+```
+
+### プリコンパイル
+
+```
+rails assets:precompile RAILS_ENV=production
 ```
 
 ### 本番停止
@@ -33,14 +39,9 @@ ps aux | grep puma
 ```
 kill -9 プロセスID
 ```
-### DBリセット
+
+### 本番起動
 
 ```
-RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:migrate:reset
-```
-
-### プリコンパイル
-
-```
-rails assets:precompile RAILS_ENV=production
+rails s -e production
 ```
