@@ -23,6 +23,6 @@ FactoryBot.define do
   factory :message do
     user { nil }
     board { nil }
-    content { "MyString" }
+    content { 'MyString' }
   end
 end

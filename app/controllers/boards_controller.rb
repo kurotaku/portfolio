@@ -1,4 +1,3 @@
 class BoardsController < ApplicationController
-  def create
-  end
+  def create; end
 end
