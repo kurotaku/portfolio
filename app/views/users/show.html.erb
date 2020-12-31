@@ -1,2 +1,8 @@
 <h1><%= @user.full_name %></h1>
+<%= form_with url: boards_path, local: true, html: { method: :post, class: '' } do |f| %>
+  <%= f.hidden_field :owner_uuid, value: current_user.uuid %>
+  <%= f.hidden_field :invited_user_uuid, value: @user.uuid %>
+  <%= f.submit 'このユーザーとメッセージをする' %>
+<% end %>
+
 

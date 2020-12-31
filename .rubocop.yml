@@ -1,8 +1,43 @@
 inherit_from: .rubocop_todo.yml
+# 自動生成されるものはチェック対象から除外する
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "db/seeds.rb"
 
 # 日本語でのコメントを許可
 AsciiComments:
   Enabled: false
+
+# 行末のカンマを許可
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+# 1行の長さ
+Metrics/LineLength:
+  Exclude:
+    - 'db/**/*'
+    - 'config/initializers/*'
+    - 'bin/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+    - 'app/admin/*'
+    - 'config/routes.rb'
+    - "Rakefile"
+    - "**/*.rake"
+    - "spec/**/*.rb"
+    - "Gemfile"
+    - "Guardfile"
+    - "config/environments/*.rb"
+    - "config/routes.rb"
+    - "config/routes/**/*.rb"
+    - "*.gemspec"
 
 # # 複数行での「lambda」で「->」による省略記法を許可
 # Lambda:
@@ -16,9 +51,9 @@ ClassAndModuleChildren:
 # AccessorMethodName:
 #   Enabled: false
 
-# # クラスにコメントを残さない
-# Documentation:
-#   Enabled: false
+# # クラスにコメントを許可
+Documentation:
+  Enabled: false
 
 # # 「and」「or」の使用を許可
 # AndOr:

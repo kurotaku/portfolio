@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 20_201_230_154_356) do
 
   create_table 'boards', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
     t.integer 'status', default: 0, null: false
+    t.string 'uuid'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
   end
 
   create_table 'messages', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
+    t.string 'uuid'
     t.bigint 'user_id', null: false
     t.bigint 'board_id', null: false
     t.string 'content'

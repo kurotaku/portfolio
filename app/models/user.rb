@@ -36,7 +36,8 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   has_many :posts
-  has_many :boards, through: :bord_users
+  has_many :board_users
+  has_many :boards, through: :board_users
 
   def full_name
     last_name.to_s + ' ' + first_name.to_s

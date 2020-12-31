@@ -20,7 +20,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -43,7 +43,7 @@ Rails.application.configure do
     user_name: ENV['GMAIL_USER_NAME'],
     password: ENV['GMAIL_USER_PASS'],
     authentication: :login,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
 
   # Print deprecation notices to the Rails logger.
