@@ -21,6 +21,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Message < ApplicationRecord
+  include Uniqueable
   belongs_to :user
   belongs_to :board
 end

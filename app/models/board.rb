@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Board < ApplicationRecord
+  include Uniqueable
   has_many :board_users
   has_many :users, through: :board_users
   has_many :messages
