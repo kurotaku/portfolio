@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :current_user, only: %i[index]
       resources :posts, only: %i[index create update destroy], param: :uuid
       resources :boards, only: %i[index]
+      resources :messages, only: %i[index]
     end
   end
 end

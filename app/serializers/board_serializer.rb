@@ -10,4 +10,7 @@
 #
 class BoardSerializer < ActiveModel::Serializer
   attributes :id
+  has_many :board_users
+  has_many :users, through: :board_users
+  has_many :messages
 end
