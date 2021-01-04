@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class BoardSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :uuid
   has_many :board_users
   has_many :users, through: :board_users
   has_many :messages

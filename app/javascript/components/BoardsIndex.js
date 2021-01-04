@@ -2,30 +2,56 @@ import React from "react"
 import PropTypes from "prop-types"
 
 
+function BoardMessageList(props){
+  return(
+    <div>
+      <h1>とのメッセージ一覧</h1>
+      <ul>
+        {props.messages.map( message => {
+          return(
+            <li key={message.uuid}>{message.content}</li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
+
 function Board(props){
   return(
-    <li key={props.key}>{props.board.id}</li>
+    <li
+      key={props.key}
+      onClick={ () => {
+          props.selectBoard(props.board);
+        }
+      }
+    >
+      {props.board.id}
+    </li>
   );
 }
 
 class BoardsIndex extends React.Component {
   constructor(props){
     super(props)
+    this.INTERVAL = 60 * 1000
     this.state = {
       now: '',
       current_user: [],
-      boards: [],
-      selectedBoardId: 0
+      boards: [{uuid: ''}],
+      messages: [],
+      selectedBoard: 'default'
     };
-    // this.getIndex = this.getIndex.bind(this)
+    this.selectBoard = this.selectBoard.bind(this);
   }
 
   componentDidMount(){
     this.getCurrentUser();
-    this.getIndex();
+    this.getBoardsIndex();
+    this.getMessagesIndex(this.state.selectedBoard);
     this.intervalId = setInterval(()=>{
-      getIndex();
-    }, 5000);
+      this.getMessagesIndex(this.state.selectedBoard);
+    }, this.INTERVAL);
   }
 
   componentWillUnmount(){
@@ -41,7 +67,7 @@ class BoardsIndex extends React.Component {
     });
   }
 
-  getIndex(){
+  getBoardsIndex(){
     fetch('/api/v1/boards.json')
     .then(response => {return response.json()} )
     .then(data => {this.setState({ boards: data })} )
@@ -50,21 +76,49 @@ class BoardsIndex extends React.Component {
     });
   }
 
+  getMessagesIndex(board_uuid){
+    fetch('/api/v1/messages.json?board_uuid=' + board_uuid)
+    .then(response => {return response.json()} )
+    .then(data => {this.setState({ messages: data })} )
+    .catch(error => {
+      console.log('GET INDEX ERROR:', error);
+    });
+  }
+
+  selectBoard(board){
+    console.log(board);
+    this.setState(
+      {selectedBoard: board}
+    );
+    clearInterval(this.intervalId);
+    this.getMessagesIndex(board.uuid);
+    this.intervalId = setInterval(()=>{
+      this.getMessagesIndex(board.uuid);
+    }, this.INTERVAL);
+  }
+
   render () {
     return (
       <React.Fragment>
-        <ul className="post-list">
-          {this.state.boards.map( board => {
-            const isSelected = board.id === parseInt(this.state.selectedBoardId, 10);
-            return(
-              <Board
-                key={board.id}
-                board={board}
-                isSelected={isSelected}
-              />
-            )
-          })}
-        </ul>
+        <div className="main-content d-flex">
+          <ul className="board-list">
+            {this.state.boards.map( board => {
+              const isSelected = board.id === parseInt(this.state.selectedBoardId, 10);
+              console.log('render');
+              console.log(this.state);
+              return(
+                <Board
+                  key={board.uuid}
+                  board={board}
+                  selectBoard={this.selectBoard}
+                />
+              )
+            })}
+          </ul>
+          <BoardMessageList
+            messages={this.state.messages}
+          />
+        </div>
       </React.Fragment>
     );
   }
