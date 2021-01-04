@@ -40,6 +40,9 @@ class BoardsIndex extends React.Component {
       current_user: [],
       boards: [{uuid: ''}],
       messages: [],
+      form: {
+        content: ''
+      },
       selectedBoard: 'default'
     };
     this.selectBoard = this.selectBoard.bind(this);
@@ -97,6 +100,43 @@ class BoardsIndex extends React.Component {
     }, this.INTERVAL);
   }
 
+  handleChange(e, key){
+    let target = e.target;
+    let value = target.value;
+    let form = this.state.form;
+    form[key] = value;
+
+    this.setState({
+      form: form
+    });
+  }
+
+  handleCreate(){
+    let body = JSON.stringify({
+      post: {
+        content: this.state.form.content
+      }
+    })
+    
+    fetch('/api/v1/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: body
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(post => {
+      this.addPost(post);
+      this.formReset();
+    })
+    .catch( error => {
+      console.log('CREATE ERROR:', error);
+    })
+  }
+
   render () {
     return (
       <React.Fragment>
@@ -113,9 +153,13 @@ class BoardsIndex extends React.Component {
               )
             })}
           </ul>
-          <BoardMessageList
-            messages={this.state.messages}
-          />
+          <div>
+            <BoardMessageList
+              messages={this.state.messages}
+            />
+            <input type="text" value={this.state.form.content} onChange={ e => this.handleChange(e, 'content')} />
+            <button onClick={() => this.handleCreate()}>投稿</button>
+          </div>
         </div>
       </React.Fragment>
     );
