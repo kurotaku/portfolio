@@ -34,7 +34,7 @@ function Board(props){
 class BoardsIndex extends React.Component {
   constructor(props){
     super(props)
-    this.INTERVAL = 60 * 1000
+    this.INTERVAL = 60 * 1000;
     this.state = {
       now: '',
       current_user: [],
@@ -43,17 +43,20 @@ class BoardsIndex extends React.Component {
       form: {
         content: ''
       },
-      selectedBoard: 'default'
+      selectedBoard: {uuid: 'default'}
     };
+    fetch('/api/v1/boards.json')
+    .then(response => {return response.json()} )
+    .then(data => {this.setState({ selectedBoard: data[0] })} );
     this.selectBoard = this.selectBoard.bind(this);
   }
 
   componentDidMount(){
     this.getCurrentUser();
     this.getBoardsIndex();
-    this.getMessagesIndex(this.state.selectedBoard);
+    this.getMessagesIndex(this.state.selectedBoard.uuid);
     this.intervalId = setInterval(()=>{
-      this.getMessagesIndex(this.state.selectedBoard);
+      this.getMessagesIndex(this.state.selectedBoard.uuid);
     }, this.INTERVAL);
   }
 
@@ -89,7 +92,6 @@ class BoardsIndex extends React.Component {
   }
 
   selectBoard(board){
-    console.log(board);
     this.setState(
       {selectedBoard: board}
     );
@@ -113,12 +115,13 @@ class BoardsIndex extends React.Component {
 
   handleCreate(){
     let body = JSON.stringify({
-      post: {
+      message: {
+        board_id: this.state.selectedBoard.id,
         content: this.state.form.content
       }
     })
     
-    fetch('/api/v1/posts', {
+    fetch('/api/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -128,12 +131,29 @@ class BoardsIndex extends React.Component {
     .then(response => {
       return response.json()
     })
-    .then(post => {
-      this.addPost(post);
+    .then(message => {
+      this.addMessage(message);
       this.formReset();
     })
     .catch( error => {
       console.log('CREATE ERROR:', error);
+    })
+  }
+
+  addMessage(message){
+    this.setState({
+      messages: this.state.messages.concat(message)
+    })
+  }
+
+  formReset(){
+    this.setState({
+      form: {
+        content: ""
+      },
+      // editForm: {
+      //   uuid: false
+      // }
     })
   }
 

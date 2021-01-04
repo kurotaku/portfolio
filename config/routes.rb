@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :current_user, only: %i[index]
       resources :posts, only: %i[index create update destroy], param: :uuid
-      resources :boards, only: %i[index]
-      resources :messages, only: %i[index]
+      resources :boards, only: %i[index], param: :uuid
+      resources :messages, only: %i[index create update destroy], param: :uuid
     end
   end
 end

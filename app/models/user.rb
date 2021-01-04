@@ -38,7 +38,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :board_users
   has_many :boards, through: :board_users
-  has_many :messages, through: :boards
+  has_many :messages
 
   def full_name
     last_name.to_s + ' ' + first_name.to_s
