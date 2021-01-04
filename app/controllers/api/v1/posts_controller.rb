@@ -29,7 +29,7 @@ module Api
       end
 
       def post_params
-        params.require(:post).permit(:id, :content)
+        params.require(:post).permit(:content)
       end
     end
   end
