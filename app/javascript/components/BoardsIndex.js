@@ -104,8 +104,6 @@ class BoardsIndex extends React.Component {
           <ul className="board-list">
             {this.state.boards.map( board => {
               const isSelected = board.id === parseInt(this.state.selectedBoardId, 10);
-              console.log('render');
-              console.log(this.state);
               return(
                 <Board
                   key={board.uuid}
