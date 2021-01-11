@@ -39,6 +39,7 @@ class User < ApplicationRecord
   has_many :board_users
   has_many :boards, through: :board_users
   has_many :messages
+  has_many :chats
 
   def full_name
     last_name.to_s + ' ' + first_name.to_s

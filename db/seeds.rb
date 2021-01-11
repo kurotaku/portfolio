@@ -62,3 +62,10 @@ Message.create!(user: user, board: board_2, content: '只今の時刻は' + Time
 Message.create!(user: user_2, board: board_2, content: '只今の時刻は' + Time.zone.now.strftime("%Y年%m月%d日%H時%M分%S秒") + 'です')
 Message.create!(user: user_2, board: board_2, content: '只今の時刻は' + Time.zone.now.strftime("%Y年%m月%d日%H時%M分%S秒") + 'です')
 
+puts '=== Chatoom ==='
+chatroom = Chatroom.create!(name: 'チャットルーム1')
+
+
+puts '=== Chat ==='
+chatroom.chats.create!(user: user, content: 'Hello!')
+chatroom.chats.create!(user: user_1, content: 'Hi!')

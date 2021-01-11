@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[show], param: :uuid
   resource :user_profile, only: %i[show edit update]
   get 'update_user_profile', to: 'user_profiles#update'
-  resources :boards, only: %i[create]
+  resources :boards, only: %i[create], param: :uuid
   get 'message', to: 'boards#index', as: 'message'
+  resources :chatrooms, only: %i[index show], param: :uuid
 
   namespace :api do
     namespace :v1 do
