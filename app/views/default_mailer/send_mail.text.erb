@@ -1,0 +1,11 @@
+<%= @user.full_name %>様
+
+<%= @content %>
+
+<% if @url.present? %>
+  以下のURLから、詳細をご確認ください。
+  <%= @url %>
+<% end %>
+
+配信元：Portfolio
+<%= root_url %>

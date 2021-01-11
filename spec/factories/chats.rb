@@ -24,7 +24,7 @@ FactoryBot.define do
   factory :chat do
     user { nil }
     chatroom { nil }
-    content { "MyString" }
-    uuid { "MyString" }
+    content { 'MyString' }
+    uuid { 'MyString' }
   end
 end

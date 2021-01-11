@@ -10,6 +10,6 @@
 #
 FactoryBot.define do
   factory :chatroom do
-    uuid { "MyString" }
+    uuid { 'MyString' }
   end
 end

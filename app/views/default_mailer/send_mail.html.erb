@@ -1,0 +1,16 @@
+<table bgcolor="#ffffff" border="0" width="100%" cellspacing="0" cellpadding="0" style="width: 100%;">
+  <tr><td valign="top" bgcolor="#ffffff" style="line-height: 0; font-size: 0;"><img src="/images/spacer.gif" width="1" height="40" ></td></tr>
+  <tr>
+    <td align="left" valign="top" bgcolor="#ffffff" style="line-height: 1.8; font-size: 14px;"><%= @user.full_name %> さん</td>
+  </tr>
+  <tr><td valign="top" bgcolor="#ffffff" style="line-height: 0; font-size: 0;"><img src="/images/spacer.gif" width="1" height="10" ></td></tr>
+  <tr>
+    <td align="left" valign="top" bgcolor="#ffffff" style="line-height: 1.8; font-size: 14px;"><%= simple_format @content %></td>
+  </tr>
+  <% if @url.present? %>
+    <tr>
+      <td align="left" valign="top" bgcolor="#ffffff" style="line-height: 1.8; font-size: 14px;">以下のURLから、詳細をご確認ください。<br><%= link_to @url, @url, class: 'word-wrap' %></td>
+    </tr>
+  <% end %>
+  <tr><td valign="top" bgcolor="#ffffff" style="line-height: 0; font-size: 0;"><img src="/images/spacer.gif" width="1" height="40" ></td></tr>
+</table>
