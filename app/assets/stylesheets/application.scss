@@ -208,5 +208,8 @@ body{
   li{
     padding: 16px;
     cursor: pointer;
+    &.current{
+      background: #f1f1f1;
+    }
   }
 }

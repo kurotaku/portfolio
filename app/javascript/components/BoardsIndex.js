@@ -18,15 +18,17 @@ function BoardMessageList(props){
 }
 
 function Board(props){
+  const clsName = (props.selectedBoard.uuid == props.board.uuid) ? "current" : '';
   return(
     <li
       key={props.key}
+      className={clsName}
       onClick={ () => {
           props.selectBoard(props.board);
         }
       }
     >
-      {props.board.id}
+      {props.board.uuid}
     </li>
   );
 }
@@ -169,6 +171,7 @@ class BoardsIndex extends React.Component {
                   key={board.uuid}
                   board={board}
                   selectBoard={this.selectBoard}
+                  selectedBoard={this.state.selectedBoard}
                 />
               )
             })}

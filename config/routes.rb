@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :current_user, only: %i[index]
+      resources :users, only: %i[index show], param: :uuid
       resources :posts, only: %i[index create update destroy], param: :uuid
       resources :boards, only: %i[index], param: :uuid
       resources :messages, only: %i[index create update destroy], param: :uuid
