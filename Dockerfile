@@ -17,9 +17,6 @@ apt-get update && apt-get install -y yarn
 
 ENV YARN_VERSION 1.21.1
 
-RUN yarn add ts-loader typescript @types/react @types/react-dom react-redux redux redux-thunk react-router-dom @types/react-router-dom @material-ui/core @material-ui/icons clsx && \
-node_modules/typescript/bin/tsc --init
-
 ADD Gemfile $APP_ROOT
 ADD Gemfile.lock $APP_ROOT
 
