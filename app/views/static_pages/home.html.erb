@@ -1,2 +1,3 @@
-<%= react_component 'PostsIndex', posts: @posts %>
+<%= javascript_pack_tag 'server_rendering.js' %>
+<%= react_component 'posts/PostsIndex', posts: @posts %>
 <%#= javascript_pack_tag 'hello_react'%>

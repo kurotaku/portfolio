@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'message', to: 'boards#index', as: 'message'
   resources :chatrooms, only: %i[index show], param: :uuid
 
+  resources :todos, only: %i[index]
+
   namespace :api do
     namespace :v1 do
       resources :current_user, only: %i[index]
