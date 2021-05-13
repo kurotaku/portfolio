@@ -58,5 +58,5 @@ kill -9 プロセスID
 ### 本番起動
 
 ```
-bundle exec rails s -e production &
+bundle exec rails s -e production&
 ```
